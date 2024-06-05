@@ -1,9 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:wedevs_assignment/model/home_model.dart';
+import 'package:http/http.dart' as http;
+import 'package:wedevs_assignment/model/login_response_model.dart';
 import 'app/routes/app_pages.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }

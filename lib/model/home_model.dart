@@ -1,3 +1,4 @@
+
 class HomeModel {
   int? id;
   String? name;
@@ -18,17 +19,13 @@ class HomeModel {
   String? price;
   String? regularPrice;
   String? salePrice;
-  String? dateOnSaleFrom;
-  String? dateOnSaleFromGmt;
-  String? dateOnSaleTo;
-  String? dateOnSaleToGmt;
   String? priceHtml;
   bool? onSale;
   bool? purchasable;
   int? totalSales;
   bool? virtual;
   bool? downloadable;
-  List<Downloads>? downloads;
+  List<dynamic>? downloads;
   int? downloadLimit;
   int? downloadExpiry;
   String? externalUrl;
@@ -36,7 +33,6 @@ class HomeModel {
   String? taxStatus;
   String? taxClass;
   bool? manageStock;
-  int? stockQuantity;
   String? lowStockAmount;
   bool? inStock;
   String? backorders;
@@ -67,325 +63,481 @@ class HomeModel {
   int? menuOrder;
   List<MetaData>? metaData;
   Store? store;
-  Links? lLinks;
+  Links? links;
+  int? stockQuantity;
 
-  HomeModel(
-      {this.id,
-        this.name,
-        this.slug,
-        this.postAuthor,
-        this.permalink,
-        this.dateCreated,
-        this.dateCreatedGmt,
-        this.dateModified,
-        this.dateModifiedGmt,
-        this.type,
-        this.status,
-        this.featured,
-        this.catalogVisibility,
-        this.description,
-        this.shortDescription,
-        this.sku,
-        this.price,
-        this.regularPrice,
-        this.salePrice,
-        this.dateOnSaleFrom,
-        this.dateOnSaleFromGmt,
-        this.dateOnSaleTo,
-        this.dateOnSaleToGmt,
-        this.priceHtml,
-        this.onSale,
-        this.purchasable,
-        this.totalSales,
-        this.virtual,
-        this.downloadable,
-        this.downloads,
-        this.downloadLimit,
-        this.downloadExpiry,
-        this.externalUrl,
-        this.buttonText,
-        this.taxStatus,
-        this.taxClass,
-        this.manageStock,
-        this.stockQuantity,
-        this.lowStockAmount,
-        this.inStock,
-        this.backorders,
-        this.backordersAllowed,
-        this.backordered,
-        this.soldIndividually,
-        this.weight,
-        this.dimensions,
-        this.shippingRequired,
-        this.shippingTaxable,
-        this.shippingClass,
-        this.shippingClassId,
-        this.reviewsAllowed,
-        this.averageRating,
-        this.ratingCount,
-        this.relatedIds,
-        this.upsellIds,
-        this.crossSellIds,
-        this.parentId,
-        this.purchaseNote,
-        this.categories,
-        this.tags,
-        this.images,
-        this.attributes,
-        this.defaultAttributes,
-        this.variations,
-        this.groupedProducts,
-        this.menuOrder,
-        this.metaData,
-        this.store,
-        this.lLinks});
+  HomeModel({this.id, this.name, this.slug, this.postAuthor, this.permalink, this.dateCreated, this.dateCreatedGmt, this.dateModified, this.dateModifiedGmt, this.type, this.status, this.featured, this.catalogVisibility, this.description, this.shortDescription, this.sku, this.price, this.regularPrice, this.salePrice, this.priceHtml, this.onSale, this.purchasable, this.totalSales, this.virtual, this.downloadable, this.downloads, this.downloadLimit, this.downloadExpiry, this.externalUrl, this.buttonText, this.taxStatus, this.taxClass, this.manageStock, this.lowStockAmount, this.inStock, this.backorders, this.backordersAllowed, this.backordered, this.soldIndividually, this.weight, this.dimensions, this.shippingRequired, this.shippingTaxable, this.shippingClass, this.shippingClassId, this.reviewsAllowed, this.averageRating, this.ratingCount, this.relatedIds, this.upsellIds, this.crossSellIds, this.parentId, this.purchaseNote, this.categories, this.tags, this.images, this.attributes, this.defaultAttributes, this.variations, this.groupedProducts, this.menuOrder, this.metaData, this.store, this.links, this.stockQuantity});
 
   HomeModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    slug = json['slug'];
-    postAuthor = json['post_author'];
-    permalink = json['permalink'];
-    dateCreated = json['date_created'];
-    dateCreatedGmt = json['date_created_gmt'];
-    dateModified = json['date_modified'];
-    dateModifiedGmt = json['date_modified_gmt'];
-    type = json['type'];
-    status = json['status'];
-    featured = json['featured'];
-    catalogVisibility = json['catalog_visibility'];
-    description = json['description'];
-    shortDescription = json['short_description'];
-    sku = json['sku'];
-    price = json['price'];
-    regularPrice = json['regular_price'];
-    salePrice = json['sale_price'];
-    dateOnSaleFrom = json['date_on_sale_from'];
-    dateOnSaleFromGmt = json['date_on_sale_from_gmt'];
-    dateOnSaleTo = json['date_on_sale_to'];
-    dateOnSaleToGmt = json['date_on_sale_to_gmt'];
-    priceHtml = json['price_html'];
-    onSale = json['on_sale'];
-    purchasable = json['purchasable'];
-    totalSales = json['total_sales'];
-    virtual = json['virtual'];
-    downloadable = json['downloadable'];
-    if (json['downloads'] != null) {
-      downloads = <Downloads>[];
-      json['downloads'].forEach((v) {
-        downloads!.add(new Downloads.fromJson(v));
-      });
+    if(json["id"] is int) {
+      id = json["id"];
     }
-    downloadLimit = json['download_limit'];
-    downloadExpiry = json['download_expiry'];
-    externalUrl = json['external_url'];
-    buttonText = json['button_text'];
-    taxStatus = json['tax_status'];
-    taxClass = json['tax_class'];
-    manageStock = json['manage_stock'];
-    stockQuantity = json['stock_quantity'];
-    lowStockAmount = json['low_stock_amount'];
-    inStock = json['in_stock'];
-    backorders = json['backorders'];
-    backordersAllowed = json['backorders_allowed'];
-    backordered = json['backordered'];
-    soldIndividually = json['sold_individually'];
-    weight = json['weight'];
-    dimensions = json['dimensions'] != null
-        ? new Dimensions.fromJson(json['dimensions'])
-        : null;
-    shippingRequired = json['shipping_required'];
-    shippingTaxable = json['shipping_taxable'];
-    shippingClass = json['shipping_class'];
-    shippingClassId = json['shipping_class_id'];
-    reviewsAllowed = json['reviews_allowed'];
-    averageRating = json['average_rating'];
-    ratingCount = json['rating_count'];
-    relatedIds = json['related_ids'].cast<int>();
-    upsellIds = json['upsell_ids'] != null ? json['upsell_ids'].cast<dynamic>() : null;
-    crossSellIds = json['cross_sell_ids'] != null ? json['cross_sell_ids'].cast<dynamic>() : null;
-    parentId = json['parent_id'];
-    purchaseNote = json['purchase_note'];
-    if (json['categories'] != null) {
-      categories = <Categories>[];
-      json['categories'].forEach((v) {
-        categories!.add(new Categories.fromJson(v));
-      });
+    if(json["name"] is String) {
+      name = json["name"];
     }
-    tags = json['tags'] != null ? json['tags'].cast<dynamic>() : null;
-    if (json['images'] != null) {
-      images = <Images>[];
-      json['images'].forEach((v) {
-        images!.add(new Images.fromJson(v));
-      });
+    if(json["slug"] is String) {
+      slug = json["slug"];
     }
-    attributes = json['attributes'] != null ? json['attributes'].cast<dynamic>() : null;
-    defaultAttributes = json['default_attributes'] != null ? json['default_attributes'].cast<dynamic>() : null;
-    variations = json['variations'] != null ? json['variations'].cast<dynamic>() : null;
-    groupedProducts = json['grouped_products'] != null ? json['grouped_products'].cast<dynamic>() : null;
-    menuOrder = json['menu_order'];
-    if (json['meta_data'] != null) {
-      metaData = <MetaData>[];
-      json['meta_data'].forEach((v) {
-        metaData!.add(new MetaData.fromJson(v));
-      });
+    if(json["post_author"] is String) {
+      postAuthor = json["post_author"];
     }
-    store = json['store'] != null ? new Store.fromJson(json['store']) : null;
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    if(json["permalink"] is String) {
+      permalink = json["permalink"];
+    }
+    if(json["date_created"] is String) {
+      dateCreated = json["date_created"];
+    }
+    if(json["date_created_gmt"] is String) {
+      dateCreatedGmt = json["date_created_gmt"];
+    }
+    if(json["date_modified"] is String) {
+      dateModified = json["date_modified"];
+    }
+    if(json["date_modified_gmt"] is String) {
+      dateModifiedGmt = json["date_modified_gmt"];
+    }
+    if(json["type"] is String) {
+      type = json["type"];
+    }
+    if(json["status"] is String) {
+      status = json["status"];
+    }
+    if(json["featured"] is bool) {
+      featured = json["featured"];
+    }
+    if(json["catalog_visibility"] is String) {
+      catalogVisibility = json["catalog_visibility"];
+    }
+    if(json["description"] is String) {
+      description = json["description"];
+    }
+    if(json["short_description"] is String) {
+      shortDescription = json["short_description"];
+    }
+    if(json["sku"] is String) {
+      sku = json["sku"];
+    }
+    if(json["price"] is String) {
+      price = json["price"];
+    }
+    if(json["regular_price"] is String) {
+      regularPrice = json["regular_price"];
+    }
+    if(json["sale_price"] is String) {
+      salePrice = json["sale_price"];
+    }
+    if(json["price_html"] is String) {
+      priceHtml = json["price_html"];
+    }
+    if(json["on_sale"] is bool) {
+      onSale = json["on_sale"];
+    }
+    if(json["purchasable"] is bool) {
+      purchasable = json["purchasable"];
+    }
+    if(json["total_sales"] is int) {
+      totalSales = json["total_sales"];
+    }
+    if(json["virtual"] is bool) {
+      virtual = json["virtual"];
+    }
+    if(json["downloadable"] is bool) {
+      downloadable = json["downloadable"];
+    }
+    if(json["downloads"] is List) {
+      downloads = json["downloads"] ?? [];
+    }
+    if(json["download_limit"] is int) {
+      downloadLimit = json["download_limit"];
+    }
+    if(json["download_expiry"] is int) {
+      downloadExpiry = json["download_expiry"];
+    }
+    if(json["external_url"] is String) {
+      externalUrl = json["external_url"];
+    }
+    if(json["button_text"] is String) {
+      buttonText = json["button_text"];
+    }
+    if(json["tax_status"] is String) {
+      taxStatus = json["tax_status"];
+    }
+    if(json["tax_class"] is String) {
+      taxClass = json["tax_class"];
+    }
+    if(json["manage_stock"] is bool) {
+      manageStock = json["manage_stock"];
+    }
+    if(json["low_stock_amount"] is String) {
+      lowStockAmount = json["low_stock_amount"];
+    }
+    if(json["in_stock"] is bool) {
+      inStock = json["in_stock"];
+    }
+    if(json["backorders"] is String) {
+      backorders = json["backorders"];
+    }
+    if(json["backorders_allowed"] is bool) {
+      backordersAllowed = json["backorders_allowed"];
+    }
+    if(json["backordered"] is bool) {
+      backordered = json["backordered"];
+    }
+    if(json["sold_individually"] is bool) {
+      soldIndividually = json["sold_individually"];
+    }
+    if(json["weight"] is String) {
+      weight = json["weight"];
+    }
+    if(json["dimensions"] is Map) {
+      dimensions = json["dimensions"] == null ? null : Dimensions.fromJson(json["dimensions"]);
+    }
+    if(json["shipping_required"] is bool) {
+      shippingRequired = json["shipping_required"];
+    }
+    if(json["shipping_taxable"] is bool) {
+      shippingTaxable = json["shipping_taxable"];
+    }
+    if(json["shipping_class"] is String) {
+      shippingClass = json["shipping_class"];
+    }
+    if(json["shipping_class_id"] is int) {
+      shippingClassId = json["shipping_class_id"];
+    }
+    if(json["reviews_allowed"] is bool) {
+      reviewsAllowed = json["reviews_allowed"];
+    }
+    if(json["average_rating"] is String) {
+      averageRating = json["average_rating"];
+    }
+    if(json["rating_count"] is int) {
+      ratingCount = json["rating_count"];
+    }
+    if(json["related_ids"] is List) {
+      relatedIds = json["related_ids"] == null ? null : List<int>.from(json["related_ids"]);
+    }
+    if(json["upsell_ids"] is List) {
+      upsellIds = json["upsell_ids"] ?? [];
+    }
+    if(json["cross_sell_ids"] is List) {
+      crossSellIds = json["cross_sell_ids"] ?? [];
+    }
+    if(json["parent_id"] is int) {
+      parentId = json["parent_id"];
+    }
+    if(json["purchase_note"] is String) {
+      purchaseNote = json["purchase_note"];
+    }
+    if(json["categories"] is List) {
+      categories = json["categories"] == null ? null : (json["categories"] as List).map((e) => Categories.fromJson(e)).toList();
+    }
+    if(json["tags"] is List) {
+      tags = json["tags"] ?? [];
+    }
+    if(json["images"] is List) {
+      images = json["images"] == null ? null : (json["images"] as List).map((e) => Images.fromJson(e)).toList();
+    }
+    if(json["attributes"] is List) {
+      attributes = json["attributes"] ?? [];
+    }
+    if(json["default_attributes"] is List) {
+      defaultAttributes = json["default_attributes"] ?? [];
+    }
+    if(json["variations"] is List) {
+      variations = json["variations"] ?? [];
+    }
+    if(json["grouped_products"] is List) {
+      groupedProducts = json["grouped_products"] ?? [];
+    }
+    if(json["menu_order"] is int) {
+      menuOrder = json["menu_order"];
+    }
+    if(json["meta_data"] is List) {
+      metaData = json["meta_data"] == null ? null : (json["meta_data"] as List).map((e) => MetaData.fromJson(e)).toList();
+    }
+    if(json["store"] is Map) {
+      store = json["store"] == null ? null : Store.fromJson(json["store"]);
+    }
+    if(json["_links"] is Map) {
+      links = json["_links"] == null ? null : Links.fromJson(json["_links"]);
+    }
+    if(json["stock_quantity"] is int) {
+      stockQuantity = json["stock_quantity"];
+    }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['slug'] = this.slug;
-    data['post_author'] = this.postAuthor;
-    data['permalink'] = this.permalink;
-    data['date_created'] = this.dateCreated;
-    data['date_created_gmt'] = this.dateCreatedGmt;
-    data['date_modified'] = this.dateModified;
-    data['date_modified_gmt'] = this.dateModifiedGmt;
-    data['type'] = this.type;
-    data['status'] = this.status;
-    data['featured'] = this.featured;
-    data['catalog_visibility'] = this.catalogVisibility;
-    data['description'] = this.description;
-    data['short_description'] = this.shortDescription;
-    data['sku'] = this.sku;
-    data['price'] = this.price;
-    data['regular_price'] = this.regularPrice;
-    data['sale_price'] = this.salePrice;
-    data['date_on_sale_from'] = this.dateOnSaleFrom;
-    data['date_on_sale_from_gmt'] = this.dateOnSaleFromGmt;
-    data['date_on_sale_to'] = this.dateOnSaleTo;
-    data['date_on_sale_to_gmt'] = this.dateOnSaleToGmt;
-    data['price_html'] = this.priceHtml;
-    data['on_sale'] = this.onSale;
-    data['purchasable'] = this.purchasable;
-    data['total_sales'] = this.totalSales;
-    data['virtual'] = this.virtual;
-    data['downloadable'] = this.downloadable;
-    if (this.downloads != null) {
-      data['downloads'] = this.downloads!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> _data = <String, dynamic>{};
+    _data["id"] = id;
+    _data["name"] = name;
+    _data["slug"] = slug;
+    _data["post_author"] = postAuthor;
+    _data["permalink"] = permalink;
+    _data["date_created"] = dateCreated;
+    _data["date_created_gmt"] = dateCreatedGmt;
+    _data["date_modified"] = dateModified;
+    _data["date_modified_gmt"] = dateModifiedGmt;
+    _data["type"] = type;
+    _data["status"] = status;
+    _data["featured"] = featured;
+    _data["catalog_visibility"] = catalogVisibility;
+    _data["description"] = description;
+    _data["short_description"] = shortDescription;
+    _data["sku"] = sku;
+    _data["price"] = price;
+    _data["regular_price"] = regularPrice;
+    _data["sale_price"] = salePrice;
+    _data["price_html"] = priceHtml;
+    _data["on_sale"] = onSale;
+    _data["purchasable"] = purchasable;
+    _data["total_sales"] = totalSales;
+    _data["virtual"] = virtual;
+    _data["downloadable"] = downloadable;
+    if(downloads != null) {
+      _data["downloads"] = downloads;
     }
-    data['download_limit'] = this.downloadLimit;
-    data['download_expiry'] = this.downloadExpiry;
-    data['external_url'] = this.externalUrl;
-    data['button_text'] = this.buttonText;
-    data['tax_status'] = this.taxStatus;
-    data['tax_class'] = this.taxClass;
-    data['manage_stock'] = this.manageStock;
-    data['stock_quantity'] = this.stockQuantity;
-    data['low_stock_amount'] = this.lowStockAmount;
-    data['in_stock'] = this.inStock;
-    data['backorders'] = this.backorders;
-    data['backorders_allowed'] = this.backordersAllowed;
-    data['backordered'] = this.backordered;
-    data['sold_individually'] = this.soldIndividually;
-    data['weight'] = this.weight;
-    if (this.dimensions != null) {
-      data['dimensions'] = this.dimensions!.toJson();
+    _data["download_limit"] = downloadLimit;
+    _data["download_expiry"] = downloadExpiry;
+    _data["external_url"] = externalUrl;
+    _data["button_text"] = buttonText;
+    _data["tax_status"] = taxStatus;
+    _data["tax_class"] = taxClass;
+    _data["manage_stock"] = manageStock;
+    _data["low_stock_amount"] = lowStockAmount;
+    _data["in_stock"] = inStock;
+    _data["backorders"] = backorders;
+    _data["backorders_allowed"] = backordersAllowed;
+    _data["backordered"] = backordered;
+    _data["sold_individually"] = soldIndividually;
+    _data["weight"] = weight;
+    if(dimensions != null) {
+      _data["dimensions"] = dimensions?.toJson();
     }
-    data['shipping_required'] = this.shippingRequired;
-    data['shipping_taxable'] = this.shippingTaxable;
-    data['shipping_class'] = this.shippingClass;
-    data['shipping_class_id'] = this.shippingClassId;
-    data['reviews_allowed'] = this.reviewsAllowed;
-    data['average_rating'] = this.averageRating;
-    data['rating_count'] = this.ratingCount;
-    data['related_ids'] = this.relatedIds;
-    data['upsell_ids'] = this.upsellIds;
-    data['cross_sell_ids'] = this.crossSellIds;
-    data['parent_id'] = this.parentId;
-    data['purchase_note'] = this.purchaseNote;
-    if (this.categories != null) {
-      data['categories'] = this.categories!.map((v) => v.toJson()).toList();
+    _data["shipping_required"] = shippingRequired;
+    _data["shipping_taxable"] = shippingTaxable;
+    _data["shipping_class"] = shippingClass;
+    _data["shipping_class_id"] = shippingClassId;
+    _data["reviews_allowed"] = reviewsAllowed;
+    _data["average_rating"] = averageRating;
+    _data["rating_count"] = ratingCount;
+    if(relatedIds != null) {
+      _data["related_ids"] = relatedIds;
     }
-    data['tags'] = this.tags;
-    if (this.images != null) {
-      data['images'] = this.images!.map((v) => v.toJson()).toList();
+    if(upsellIds != null) {
+      _data["upsell_ids"] = upsellIds;
     }
-    data['attributes'] = this.attributes;
-    data['default_attributes'] = this.defaultAttributes;
-    data['variations'] = this.variations;
-    data['grouped_products'] = this.groupedProducts;
-    data['menu_order'] = this.menuOrder;
-    if (this.metaData != null) {
-      data['meta_data'] = this.metaData!.map((v) => v.toJson()).toList();
+    if(crossSellIds != null) {
+      _data["cross_sell_ids"] = crossSellIds;
     }
-    if (this.store != null) {
-      data['store'] = this.store!.toJson();
+    _data["parent_id"] = parentId;
+    _data["purchase_note"] = purchaseNote;
+    if(categories != null) {
+      _data["categories"] = categories?.map((e) => e.toJson()).toList();
     }
-    if (this.lLinks != null) {
-      data['_links'] = this.lLinks!.toJson();
+    if(tags != null) {
+      _data["tags"] = tags;
     }
-    return data;
+    if(images != null) {
+      _data["images"] = images?.map((e) => e.toJson()).toList();
+    }
+    if(attributes != null) {
+      _data["attributes"] = attributes;
+    }
+    if(defaultAttributes != null) {
+      _data["default_attributes"] = defaultAttributes;
+    }
+    if(variations != null) {
+      _data["variations"] = variations;
+    }
+    if(groupedProducts != null) {
+      _data["grouped_products"] = groupedProducts;
+    }
+    _data["menu_order"] = menuOrder;
+    if(metaData != null) {
+      _data["meta_data"] = metaData?.map((e) => e.toJson()).toList();
+    }
+    if(store != null) {
+      _data["store"] = store?.toJson();
+    }
+    if(links != null) {
+      _data["_links"] = links?.toJson();
+    }
+    _data["stock_quantity"] = stockQuantity;
+    return _data;
   }
 }
 
-class Downloads {
-  String? id;
-  String? name;
-  String? file;
+class Links {
+  List<Self>? self;
+  List<Collection>? collection;
 
-  Downloads({this.id, this.name, this.file});
+  Links({this.self, this.collection});
 
-  Downloads.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    file = json['file'];
+  Links.fromJson(Map<String, dynamic> json) {
+    if(json["self"] is List) {
+      self = json["self"] == null ? null : (json["self"] as List).map((e) => Self.fromJson(e)).toList();
+    }
+    if(json["collection"] is List) {
+      collection = json["collection"] == null ? null : (json["collection"] as List).map((e) => Collection.fromJson(e)).toList();
+    }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['file'] = this.file;
-    return data;
+    final Map<String, dynamic> _data = <String, dynamic>{};
+    if(self != null) {
+      _data["self"] = self?.map((e) => e.toJson()).toList();
+    }
+    if(collection != null) {
+      _data["collection"] = collection?.map((e) => e.toJson()).toList();
+    }
+    return _data;
   }
 }
 
-class Dimensions {
-  String? length;
-  String? width;
-  String? height;
+class Collection {
+  String? href;
 
-  Dimensions({this.length, this.width, this.height});
+  Collection({this.href});
 
-  Dimensions.fromJson(Map<String, dynamic> json) {
-    length = json['length'];
-    width = json['width'];
-    height = json['height'];
+  Collection.fromJson(Map<String, dynamic> json) {
+    if(json["href"] is String) {
+      href = json["href"];
+    }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['length'] = this.length;
-    data['width'] = this.width;
-    data['height'] = this.height;
-    return data;
+    final Map<String, dynamic> _data = <String, dynamic>{};
+    _data["href"] = href;
+    return _data;
   }
 }
 
-class Categories {
+class Self {
+  String? href;
+
+  Self({this.href});
+
+  Self.fromJson(Map<String, dynamic> json) {
+    if(json["href"] is String) {
+      href = json["href"];
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> _data = <String, dynamic>{};
+    _data["href"] = href;
+    return _data;
+  }
+}
+
+class Store {
   int? id;
   String? name;
-  String? slug;
+  String? url;
+  String? avatar;
+  Address? address;
 
-  Categories({this.id, this.name, this.slug});
+  Store({this.id, this.name, this.url, this.avatar, this.address});
 
-  Categories.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    slug = json['slug'];
+  Store.fromJson(Map<String, dynamic> json) {
+    if(json["id"] is int) {
+      id = json["id"];
+    }
+    if(json["name"] is String) {
+      name = json["name"];
+    }
+    if(json["url"] is String) {
+      url = json["url"];
+    }
+    if(json["avatar"] is String) {
+      avatar = json["avatar"];
+    }
+    if(json["address"] is Map) {
+      address = json["address"] == null ? null : Address.fromJson(json["address"]);
+    }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['slug'] = this.slug;
-    return data;
+    final Map<String, dynamic> _data = <String, dynamic>{};
+    _data["id"] = id;
+    _data["name"] = name;
+    _data["url"] = url;
+    _data["avatar"] = avatar;
+    if(address != null) {
+      _data["address"] = address?.toJson();
+    }
+    return _data;
+  }
+}
+
+class Address {
+  String? street1;
+  String? street2;
+  String? city;
+  String? zip;
+  String? country;
+  String? state;
+
+  Address({this.street1, this.street2, this.city, this.zip, this.country, this.state});
+
+  Address.fromJson(Map<String, dynamic> json) {
+    if(json["street_1"] is String) {
+      street1 = json["street_1"];
+    }
+    if(json["street_2"] is String) {
+      street2 = json["street_2"];
+    }
+    if(json["city"] is String) {
+      city = json["city"];
+    }
+    if(json["zip"] is String) {
+      zip = json["zip"];
+    }
+    if(json["country"] is String) {
+      country = json["country"];
+    }
+    if(json["state"] is String) {
+      state = json["state"];
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> _data = <String, dynamic>{};
+    _data["street_1"] = street1;
+    _data["street_2"] = street2;
+    _data["city"] = city;
+    _data["zip"] = zip;
+    _data["country"] = country;
+    _data["state"] = state;
+    return _data;
+  }
+}
+
+class MetaData {
+  int? id;
+  String? key;
+  String? value;
+
+  MetaData({this.id, this.key, this.value});
+
+  MetaData.fromJson(Map<String, dynamic> json) {
+    if(json["id"] is int) {
+      id = json["id"];
+    }
+    if(json["key"] is String) {
+      key = json["key"];
+    }
+    if(json["value"] is String) {
+      value = json["value"];
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> _data = <String, dynamic>{};
+    _data["id"] = id;
+    _data["key"] = key;
+    _data["value"] = value;
+    return _data;
   }
 }
 
@@ -398,226 +550,107 @@ class Images {
   String? src;
   String? name;
   String? alt;
+  int? position;
 
-  Images(
-      {this.id,
-        this.dateCreated,
-        this.dateCreatedGmt,
-        this.dateModified,
-        this.dateModifiedGmt,
-        this.src,
-        this.name,
-        this.alt});
+  Images({this.id, this.dateCreated, this.dateCreatedGmt, this.dateModified, this.dateModifiedGmt, this.src, this.name, this.alt, this.position});
 
   Images.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    dateCreated = json['date_created'];
-    dateCreatedGmt = json['date_created_gmt'];
-    dateModified = json['date_modified'];
-    dateModifiedGmt = json['date_modified_gmt'];
-    src = json['src'];
-    name = json['name'];
-    alt = json['alt'];
+    if(json["id"] is int) {
+      id = json["id"];
+    }
+    if(json["date_created"] is String) {
+      dateCreated = json["date_created"];
+    }
+    if(json["date_created_gmt"] is String) {
+      dateCreatedGmt = json["date_created_gmt"];
+    }
+    if(json["date_modified"] is String) {
+      dateModified = json["date_modified"];
+    }
+    if(json["date_modified_gmt"] is String) {
+      dateModifiedGmt = json["date_modified_gmt"];
+    }
+    if(json["src"] is String) {
+      src = json["src"];
+    }
+    if(json["name"] is String) {
+      name = json["name"];
+    }
+    if(json["alt"] is String) {
+      alt = json["alt"];
+    }
+    if(json["position"] is int) {
+      position = json["position"];
+    }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['date_created'] = this.dateCreated;
-    data['date_created_gmt'] = this.dateCreatedGmt;
-    data['date_modified'] = this.dateModified;
-    data['date_modified_gmt'] = this.dateModifiedGmt;
-    data['src'] = this.src;
-    data['name'] = this.name;
-    data['alt'] = this.alt;
-    return data;
+    final Map<String, dynamic> _data = <String, dynamic>{};
+    _data["id"] = id;
+    _data["date_created"] = dateCreated;
+    _data["date_created_gmt"] = dateCreatedGmt;
+    _data["date_modified"] = dateModified;
+    _data["date_modified_gmt"] = dateModifiedGmt;
+    _data["src"] = src;
+    _data["name"] = name;
+    _data["alt"] = alt;
+    _data["position"] = position;
+    return _data;
   }
 }
 
-class MetaData {
-  int? id;
-  String? key;
-  String? value;
-
-  MetaData({this.id, this.key, this.value});
-
-  MetaData.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    key = json['key'];
-    value = json['value'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['key'] = this.key;
-    data['value'] = this.value;
-    return data;
-  }
-}
-
-class Store {
+class Categories {
   int? id;
   String? name;
-  String? shopName;
-  String? url;
-  Address? address;
-  String? avatar;
-  int? bannerId;
-  String? banner;
-  String? gravatar;
-  int? rating;
-  int? productsPerPage;
-  bool? showEmail;
-  String? location;
-  bool? showMoreProductTab;
-  bool? phoneVerification;
-  bool? socialLogin;
+  String? slug;
 
-  Store(
-      {this.id,
-        this.name,
-        this.shopName,
-        this.url,
-        this.address,
-        this.avatar,
-        this.bannerId,
-        this.banner,
-        this.gravatar,
-        this.rating,
-        this.productsPerPage,
-        this.showEmail,
-        this.location,
-        this.showMoreProductTab,
-        this.phoneVerification,
-        this.socialLogin});
+  Categories({this.id, this.name, this.slug});
 
-  Store.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    shopName = json['shop_name'];
-    url = json['url'];
-    address =
-    json['address'] != null ? new Address.fromJson(json['address']) : null;
-    avatar = json['avatar'];
-    bannerId = json['banner_id'];
-    banner = json['banner'];
-    gravatar = json['gravatar'];
-    rating = json['rating'];
-    productsPerPage = json['products_per_page'];
-    showEmail = json['show_email'];
-    location = json['location'];
-    showMoreProductTab = json['show_more_product_tab'];
-    phoneVerification = json['phone_verification'];
-    socialLogin = json['social_login'];
+  Categories.fromJson(Map<String, dynamic> json) {
+    if(json["id"] is int) {
+      id = json["id"];
+    }
+    if(json["name"] is String) {
+      name = json["name"];
+    }
+    if(json["slug"] is String) {
+      slug = json["slug"];
+    }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['shop_name'] = this.shopName;
-    data['url'] = this.url;
-    if (this.address != null) {
-      data['address'] = this.address!.toJson();
-    }
-    data['avatar'] = this.avatar;
-    data['banner_id'] = this.bannerId;
-    data['banner'] = this.banner;
-    data['gravatar'] = this.gravatar;
-    data['rating'] = this.rating;
-    data['products_per_page'] = this.productsPerPage;
-    data['show_email'] = this.showEmail;
-    data['location'] = this.location;
-    data['show_more_product_tab'] = this.showMoreProductTab;
-    data['phone_verification'] = this.phoneVerification;
-    data['social_login'] = this.socialLogin;
-    return data;
+    final Map<String, dynamic> _data = <String, dynamic>{};
+    _data["id"] = id;
+    _data["name"] = name;
+    _data["slug"] = slug;
+    return _data;
   }
 }
 
-class Address {
-  String? street1;
-  String? street2;
-  String? city;
-  String? zip;
-  String? country;
-  String? state;
+class Dimensions {
+  String? length;
+  String? width;
+  String? height;
 
-  Address(
-      {this.street1,
-        this.street2,
-        this.city,
-        this.zip,
-        this.country,
-        this.state});
+  Dimensions({this.length, this.width, this.height});
 
-  Address.fromJson(Map<String, dynamic> json) {
-    street1 = json['street_1'];
-    street2 = json['street_2'];
-    city = json['city'];
-    zip = json['zip'];
-    country = json['country'];
-    state = json['state'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['street_1'] = this.street1;
-    data['street_2'] = this.street2;
-    data['city'] = this.city;
-    data['zip'] = this.zip;
-    data['country'] = this.country;
-    data['state'] = this.state;
-    return data;
-  }
-}
-
-class Links {
-  List<Href>? self;
-  List<Href>? collection;
-
-  Links({this.self, this.collection});
-
-  Links.fromJson(Map<String, dynamic> json) {
-    if (json['self'] != null) {
-      self = <Href>[];
-      json['self'].forEach((v) {
-        self!.add(new Href.fromJson(v));
-      });
+  Dimensions.fromJson(Map<String, dynamic> json) {
+    if(json["length"] is String) {
+      length = json["length"];
     }
-    if (json['collection'] != null) {
-      collection = <Href>[];
-      json['collection'].forEach((v) {
-        collection!.add(new Href.fromJson(v));
-      });
+    if(json["width"] is String) {
+      width = json["width"];
+    }
+    if(json["height"] is String) {
+      height = json["height"];
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.self != null) {
-      data['self'] = this.self!.map((v) => v.toJson()).toList();
-    }
-    if (this.collection != null) {
-      data['collection'] = this.collection!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Href {
-  String? href;
-
-  Href({this.href});
-
-  Href.fromJson(Map<String, dynamic> json) {
-    href = json['href'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['href'] = this.href;
-    return data;
+    final Map<String, dynamic> _data = <String, dynamic>{};
+    _data["length"] = length;
+    _data["width"] = width;
+    _data["height"] = height;
+    return _data;
   }
 }

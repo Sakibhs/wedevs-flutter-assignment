@@ -126,22 +126,27 @@ class SignInView extends GetView<SignInController> {
               ],
             ),
             SizedBox(height: 30,),
-            Container(
-              padding: EdgeInsets.all(12),
-              margin: EdgeInsets.symmetric(horizontal: 4),
-              decoration: BoxDecoration(
-                color: Color(0xffF1634C),
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-              ),
-              child: Center(
-                child: Text(
-                  'Login',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.54,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
+            InkWell(
+              onTap: () async{
+              await controller.login();
+              },
+              child: Container(
+                padding: EdgeInsets.all(12),
+                margin: EdgeInsets.symmetric(horizontal: 4),
+                decoration: BoxDecoration(
+                  color: Color(0xffF1634C),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
+                child: Center(
+                  child: Text(
+                    'Login',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.54,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
