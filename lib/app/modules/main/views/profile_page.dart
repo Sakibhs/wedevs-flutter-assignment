@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:wedevs_assignment/app/modules/main/controllers/profile_controller.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
-
+   ProfilePage({super.key});
+  final ProfileController controller = Get.put(ProfileController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,6 +71,7 @@ class ProfilePage extends StatelessWidget {
 
                         ),
                         child: TextField(
+                          controller: controller.emailController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "mdsakibhossainbd@gmail.com",
@@ -90,6 +92,7 @@ class ProfilePage extends StatelessWidget {
                             border: Border.all(width: 1.0, color: Color(0x8f263238))
                         ),
                         child: TextField(
+                          controller: controller.fullNameController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "Sakib Hossain",
@@ -110,6 +113,7 @@ class ProfilePage extends StatelessWidget {
                             border: Border.all(width: 1.0, color: Color(0x8f263238))
                         ),
                         child: TextField(
+                          controller: controller.streetAddressController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "465 Nolan Causeway Suite 079",
@@ -130,6 +134,7 @@ class ProfilePage extends StatelessWidget {
                             border: Border.all(width: 1.0, color: Color(0x8f263238))
                         ),
                         child: TextField(
+                          controller: controller.unitController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "Unit 512",
@@ -149,6 +154,7 @@ class ProfilePage extends StatelessWidget {
                             border: Border.all(width: 1.0, color: Color(0x8f263238))
                         ),
                         child: TextField(
+                          controller: controller.zipCodeController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "77017",
@@ -158,17 +164,40 @@ class ProfilePage extends StatelessWidget {
                       ),
                       SizedBox(height: 20,),
                      Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                        children: [
                             Container(
+                              width: Get.width / 2 - 53,
+                              padding: EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: Colors.white
-
+                                borderRadius: BorderRadius.all(Radius.circular(12)),
+                                color: Colors.white,
+                                 boxShadow: [
+                                   BoxShadow(blurRadius: 1, color: Color(0xff777777))
+                                 ],
                               ),
-                            )
+                              child: Center(child: Text('Cancel', style: TextStyle(color: Colors.black),),),
+                            ),
+                         InkWell(
+                           onTap:(){
+
+                           },
+                           child: Container(
+                             padding: EdgeInsets.all(12.0),
+                             width: Get.width / 2 - 53,
+                             decoration: BoxDecoration(
+                               borderRadius: BorderRadius.all(Radius.circular(12)),
+                               color: Color(0xff1ABC9C),
+                               boxShadow: [
+                                 BoxShadow(blurRadius: 1, color: Color(0xff777777))
+                               ],
+                             ),
+                             child: Center(child: Text('Save', style: TextStyle(color: Colors.white)),),
+                           ),
+                         ),
                        ],
-                     )
-
-
+                     ),
+                      SizedBox(height: 13,)
                     ],
                   ),
                 ),

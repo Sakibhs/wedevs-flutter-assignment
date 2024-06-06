@@ -10,7 +10,7 @@ class SignInController extends GetxController {
 
   TextEditingController signInEmailTextController = TextEditingController();
   TextEditingController passwordTextController = TextEditingController();
-  var isPasswordVisibleLogin = true.obs;
+  var isPasswordVisibleLogin = false.obs;
   @override
   void onInit() {
     super.onInit();
@@ -31,7 +31,7 @@ class SignInController extends GetxController {
       try{
         bool isLoginSuccess = await loginRepo.login(signInEmailTextController.text.trim(), passwordTextController.text.trim());
         if (isLoginSuccess) {
-          successSnack("Login Successful");
+          successSnack('Welcome!');
           Get.toNamed(Routes.MAIN);
         }
       } catch(e){
@@ -39,7 +39,7 @@ class SignInController extends GetxController {
         errorSnack(errorMsg);
       }
     } else {
-      Get.snackbar("Error.", "Please fill the form correctly.");
+      Get.snackbar("Error.", "Please fill the login form correctly.");
     }
   }
 

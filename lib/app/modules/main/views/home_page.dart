@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:wedevs_assignment/app/modules/main/views/product_view.dart';
+import 'package:wedevs_assignment/app/routes/app_pages.dart';
 import 'package:wedevs_assignment/model/home_model.dart';
 
 import '../controllers/main_controller.dart';
@@ -23,7 +24,12 @@ class HomePage extends GetView<MainController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(),
+                      InkWell(
+                        onTap: (){
+                          Get.offAllNamed(Routes.SIGN_IN);
+                        },
+                        child: Icon(Icons.logout_outlined, color: Colors.black, size: 28,),
+                      ),
                       Text(
                         'Product List',
                         style: TextStyle(fontSize: 24, color: Color(0xff222455), fontWeight: FontWeight.bold),

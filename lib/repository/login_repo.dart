@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 class LoginRepo{
 
   Future<bool> login(String userName, String password) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     var client = http.Client();
     const Map<String, String> header = {
       'Content-type': 'application/x-www-form-urlencoded',
@@ -13,10 +15,12 @@ class LoginRepo{
       'username' : userName,
       'password': password
     }, headers: header, encoding: Encoding.getByName('utf-8'),);
+    Map<String, dynamic> responseMap = jsonDecode(response.body);
     if (response.statusCode == 200) {
+      String token = responseMap['token'];
+      prefs.setString('token', token);
       return true;
     } else {
-      Map<String, dynamic> responseMap = jsonDecode(response.body);
       throw Exception(responseMap['message']);
     }
 

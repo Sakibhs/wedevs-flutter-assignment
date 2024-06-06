@@ -106,7 +106,7 @@ class SignInView extends GetView<SignInController> {
                       },
                       child: Obx(
                             () => Icon(
-                          controller.isPasswordVisibleLogin.value
+                          !controller.isPasswordVisibleLogin.value
                               ? Icons.visibility_off
                               : Icons.visibility,
                          // color: Colors.white,

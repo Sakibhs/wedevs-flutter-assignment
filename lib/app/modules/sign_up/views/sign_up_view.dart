@@ -135,8 +135,8 @@ class SignUpView extends GetView<SignUpController> {
             ),
             SizedBox(height: 35,),
             InkWell(
-              onTap: (){
-                controller.register();
+              onTap: () async {
+                await controller.register();
               },
               child: Container(
                 padding: EdgeInsets.all(12),

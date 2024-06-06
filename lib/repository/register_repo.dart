@@ -1,7 +1,4 @@
 import 'dart:convert';
-
-import 'package:wedevs_assignment/model/register_error_model.dart';
-
 import '../model/register_model.dart';
 import 'package:http/http.dart' as http;
 class RegisterRepo{
@@ -18,9 +15,6 @@ class RegisterRepo{
     } else{
       Map<String, dynamic> responseMap = jsonDecode(response.body);
       throw Exception(responseMap['message']);
-      // RegisterErrorModel model = RegisterErrorModel();
-      // model = RegisterErrorModel.fromJson(jsonDecode(response.body));
-      // throw Exception(model.message);
     }
 
   }

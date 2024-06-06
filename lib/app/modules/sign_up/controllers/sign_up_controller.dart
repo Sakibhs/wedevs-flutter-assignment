@@ -2,8 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:wedevs_assignment/app/routes/app_pages.dart';
 import 'package:wedevs_assignment/common/global_widget.dart';
 import 'package:wedevs_assignment/model/register_model.dart';
+import 'package:wedevs_assignment/repository/login_repo.dart';
 import 'package:wedevs_assignment/repository/register_repo.dart';
 
 class SignUpController extends GetxController {
@@ -23,7 +25,7 @@ class SignUpController extends GetxController {
     super.onReady();
   }
 
-  void register() async {
+  Future<void> register() async {
     RegisterRepo registerRepo = RegisterRepo();
     RegisterModel model = RegisterModel();
     if(signUpEmailTextController.text.trim().isNotEmpty && signUpNameTextController.text.trim().isNotEmpty
@@ -35,14 +37,19 @@ class SignUpController extends GetxController {
       try{
       bool isRegister = await registerRepo.register(model);
       if (isRegister) {
-        successSnack("Register Successful");
+         LoginRepo repo = LoginRepo();
+        bool isLogin = await repo.login(model.email!, model.password!);
+        if(isLogin){
+          Get.toNamed(Routes.MAIN);
+          successSnack('Welcome!');
+        }
       }
     } catch(e){
         String errorMsg = e.toString().replaceFirst('Exception: ', '');
         errorSnack(errorMsg);
       }
     } else {
-      Get.snackbar("Error.", "Please fill the form correctly.");
+      Get.snackbar("Error.", "Please fill the register form correctly.");
     }
   }
 
