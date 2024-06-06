@@ -7,7 +7,7 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text('Feature Page', style: TextStyle(fontSize: 24),),
+        child: Text('This is search Page', style: TextStyle(fontSize: 24),),
       ),
     );
   }

@@ -13,4 +13,5 @@ abstract class _Paths {
   static const SIGN_UP = '/sign-up';
   static const SIGN_IN = '/sign-in';
   static const MAIN = '/main';
+  static const SPLASH = '/splash';
 }

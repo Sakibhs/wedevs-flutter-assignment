@@ -22,21 +22,24 @@ class ProfilePage extends StatelessWidget {
           ),
           SizedBox(height: 20,),
           CircleAvatar(
-            radius: 60,
+            radius: 50,
             child: ClipOval(
-              child: Image.asset(
-                'assets/images/default_product_image.png',
+              child: Image.network(controller.model.value?.avatarUrls?.ninesix ?? '',
+                fit: BoxFit.fill,
+                errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                  return Image.asset('assets/images/default_product_image.png');
+                },
               ),
             ),
           ),
           SizedBox(height: 30,),
           Center(
             child: Text(
-              'Sakib Hossain',
+              controller.model.value?.name ?? "Sakib Hossin",
               style: TextStyle(fontSize: 24, color: Color(0xff000000), fontWeight: FontWeight.bold),
             ),
           ),
-          Center(child: Text('mdsakibhossainbd@gmail.com', style: TextStyle(color: Color(0xff535353)),)),
+          Center(child: Text('demo@xyz.com', style: TextStyle(color: Color(0xff535353)),)),
           SizedBox(height: 30,),
           Container(
             margin: EdgeInsets.all(12),

@@ -7,7 +7,7 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text('Feature Page', style: TextStyle(fontSize: 24),),
+        child: Text('This is Cart Page', style: TextStyle(fontSize: 24),),
       ),
     );
   }
