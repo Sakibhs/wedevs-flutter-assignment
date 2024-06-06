@@ -10,17 +10,16 @@ class ProfileController extends GetxController{
   TextEditingController streetAddressController = TextEditingController();
   TextEditingController zipCodeController = TextEditingController();
   TextEditingController unitController = TextEditingController();
-  Rx<ProfileModel?> model = Rx<ProfileModel?>(null);
   @override
   Future<void> onInit() async {
     // TODO: implement onInit
     super.onInit();
-    ProfileRepo repo = ProfileRepo();
-    model.value = await repo.getProfile();
-    print(model.value);
+
   }
 
-  Future<void> updateProfile() async {
-
+  Future<ProfileModel?> getProfile() async {
+    ProfileRepo repo = ProfileRepo();
+    ProfileModel? model = await repo.getProfile();
+    return model;
   }
 }
